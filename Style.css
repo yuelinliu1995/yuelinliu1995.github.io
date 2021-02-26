@@ -1,0 +1,155 @@
+/* Size fitting */
+* {
+  box-sizing:border-box;
+}
+
+/* Slide Bar */
+.slidecontainer {
+  width: 70%;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 10px;
+  border-radius: 5px;
+  background: #ffffff;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: #191a19;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: #191a19;
+  cursor: pointer;
+}
+/* Progress Bar */
+#myProgress {
+    width: 60%;
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-style: groove;
+  }
+#myBar {
+    width: 10%;
+    height: 20px;
+    background-color: black;
+    text-align: center;
+    color: white;
+  }
+
+/* Uploader*/
+#Uploader{
+  -webkit-appearance:none;
+  appearance:none;
+  width:35%;
+}
+
+/* Instruction*/
+.tab {
+  overflow: hidden;
+  border: 1px solid #696969;
+  background-color: #f1f1f1;
+}
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: %inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+/* Style the tab content */
+.tabcontent {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+    overflow: auto;
+}
+.tabcontent video {
+width:20%;
+height: 80%;
+   float:right;
+}
+
+.tabcontent   img {
+
+  max-height: auto;
+}
+/* logo */
+.container1 {
+    margin: auto;
+    width: 100%;
+    overflow: auto;
+     height: 100px;
+     background-color:#E5E8E8
+   }
+.container1 img {
+    float: left;
+
+  }
+
+/* Web content*/
+.container {
+    margin: auto;
+    width: 80%;
+    overflow: auto;
+  }
+.xlarge-font {
+    font-size: 44px;
+    text-align: center;
+  }
+/* consent content*/
+  P.blocktext {
+    border: 1px solid #000;
+    border-style:solid;
+    height:200px;
+    overflow-y:auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+  }
+
+
+/* Visual Stimuli*/
+canvas {
+    background: #A6ACAF;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+  }
+
+/*experiment container*/
+.exp {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}

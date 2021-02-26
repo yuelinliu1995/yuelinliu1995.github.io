@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--Basic parameters-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS&language</title>
+    <!-- fetch directives are to control locations from which certain resource types may be loaded.-->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src * data: blob: ws: wss: gap://ready file://*;
+    style-src * 'unsafe-inline';
+    script-src * 'unsafe-inline' 'unsafe-eval';
+    connect-src * ws: wss:;" />
+    <!--Add CSS and js -->
+    <link rel="stylesheet" href="Style.css" type="text/css" />
+    <link rel="shortcut icon" href="">
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+        <script>
+        function playtest() {
+            var audio = document.getElementById("audio");
+              audio.play();
+            }
+            // for permutation
+            var sequence = [
+              [0, 1],
+              [1, 0],
+            ];
+
+            var link =[
+              'Regular1.html','Regular2.html'
+            ]
+            var TotalParts=2;
+            function drainage(){
+                subjectid=document.getElementById("subjID").value;
+               if (subjectid ) {
+                 localStorage.setItem("subjectid",subjectid);
+                 subjecttimes=1;
+                 window.location.href = link[sequence[subjectid.charCodeAt(2)%TotalParts][subjecttimes-1]] + '?'+subjectid+ subjecttimes;
+                 } else {
+                  alert("Please fill out the information!");
+               }
+              }
+         </script>
+
+</head>
+
+<body style="background-color:#A6ACAF">
+
+  <!-- LOGO -->
+  <div id ='header' class="container1">
+    <img src="img/logo.png"  width="480px" height="90px" ></img>
+  </div>
+
+  <!-- Drainage Page -->
+  <div id='Drainage' class="container" style="display:''">
+
+    <div class="questions" id="Form1" style="margin: 0;position: absolute;
+    top: 50%;left: 50%;transform: translate(-50%, -50%);text-align: center;">
+        Your ID:<input id="subjID" type="text" value="">
+    <br><br>
+    Before continue, make sure your system volume is at a comfortable level and
+     <b> Please do NOT use Bluetooth headset/earphone!</b> Bluetooth affects the duration of experimental stimuli.<br>
+     <br><br>
+    </div>
+        <button class="button" id="begin" onClick="drainage()" style="margin: 0;position: absolute; top: 80%;left: 50%;transform: translate(-50%, -50%);text-align: center;">
+        Proceed
+        </button>
+
+  </div>
+
+  <!-- Welcome Page -->
+  <div id='intro' class="container" style="display:none" >
+        <h1 class="xlarge-font" ><b>Welcome :) </b></h1>
+        <h4>  We would like to invite you to take part in the following study about
+        Sensorimotor Synchronization and Time Perception. Before the experiment, we need your consent to proceed.  </h4>
+
+          <p class="blocktext">
+            <b> This study takes up to around 35 min</b>.
+            You will be compensated <b>£ 4 </b> after completion of the whole study. Please understand that we
+            <em> <b>reserve the right to not compensate entries</em> </b>that fail
+            to follow instructions.<br>
+
+           <br>
+            <b>Introduction:</b> My name is Yuelin LIU.
+            I am a doctoral student in the School of Psychological and Cognitive Sciences at the
+           Peking University, Beijing, and a joint-training student in the institute of Medical Psychology, Ludwig Maximilian University of Munich.
+            I invite you to take part in a research study about language and Sensorimotor Synchronization.
+            This study is approved by the ethical committee of the School of Psychological and Cognitive Sciences, Peking University, in accordance with the Declaration of Helsinki. <br><br>
+            <b> Purpose:</b> The purpose of the study is to examine how people synchronize body
+            movement to different sensory stimuli, and how people perceive time. Sensorimotor Synchronization refers to the coordination of rhythmic movement
+              with an external rhythm, e.g., grooving with music. In this experiment, you need to
+              synchronize your finger tapping with different rhymic stimuli. <br><br>
+            <b> Rights:</b> Participation in research is completely voluntary.
+            You have the right to decline to participate or to withdraw at any point in this study
+            without penalty or loss of benefits to which you are otherwise entitled.<br><br>
+
+            <b> Risks/Discomforts:</b> It is possible but unlikely that doing any of the tasks could cause you
+            the movements require a minimal amount of effort. These procedures have been used extensively in
+            previous research, and we have taken precautions to prevent any discomforts or malfunctions of the
+            devices. There is a slight chance you may feel frustrated or uncomfortable if some of the tasks are
+            difficult for you to do, but you are free to discontinue your participation in the study if you choose. Please
+            let us know if you feel fatigued or uncomfortable at any time during the experiment.<br><br>
+
+            <b>Confidentiality:</b> Your information will be handled as confidentially as possible. Your results will be coded, and you will not be identified in any presentation or publication,
+            unless you have specified your permission for this in the attached Media Records Release consent form.
+            Your data will be encrypted and securely stored indefinitely on password-protected computers.<br><br>
+
+            <b>Benefits:</b> It is important that you understand there is no direct benefit to you anticipated from your participation in
+            this study. Healthy people, such as yourself, provide us with the standard level of performance on these
+            tasks. We expect this research to lead to a better understanding of their problems and hope that this knowledge
+            will eventually improve treatment for patients with neurological problems. <br><br>
+           </p>
+
+        <h4>  If you agree and consent to these terms, please click "I Agree" to continue.
+        Otherwise, please exit the page by clicking "I do NOT consent to these terms".</h4>
+          <center>
+        <button class="button" onClick="changediv(intro,QuitPage2);">
+
+         I do NOT consent to these terms.
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <button class="button" onClick="changediv(intro,ExpInfo);">
+        I Agree
+        </button>
+        </center>
+  </div>
+
+ <!-- Exp basic Page-->
+ <div id="ExpInfo" class="container" style="display:none">
+    <!-- CHANGE INDEX.JS CHECKINFO() IF MODIFIED -->
+    <center><h1>Basic Information</h1></center>
+    <hr>
+
+    <form id='infoform'>
+            <div class="questions" >
+                <b>1.</b> Age:
+                <input id="age" type="text" name="age" value="">
+            </div>
+
+            <div class="questions" >
+                <b>2.</b> Gender:
+                <select id="gender" name="gender">
+                    <option value=""></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Genderqueer/Non-Binary</option>
+                </select>
+            </div>
+            <div class="questions" >
+                  <b>3.</b> Right or left handed:
+              <select id="hand" name="hand">
+                  <option value=""></option>
+                  <option value="righth">Right</option>
+                  <option value="lefth">Left</option>
+                  <option value="bothh">Ambidextrous</option>
+              </select>
+              <br> <em>* Please use your dominant hand throughout the experiment</em>
+            </div>
+          <div class="questions" >
+           <b>4.</b> Mother tongue:
+           <input id="language" type="text" name="language" value="">
+          </div>
+          <div class="questions" ><br>
+            <b>5.</b> Have you ever received professional music training besides music education at school? <br>
+            If yes, please indicate your approximate training time(in years); if no, please write 0.
+            <input id="musicexp" type="text" name="music" value="">
+          </div>
+
+
+
+    </form>
+
+     <hr>
+    <p> </center><b><em><span style="color: #AE1B2D ">NOTE:</span></b></em></center>
+            <br><b>1. </b>Please be concentrated.
+            Your valid response times, reaction time,
+            and reaction stability is very important to us and will have a direct impact on your compensation.
+          <br><b>2. </b>Please turn off or minimize other programs running on your computer.
+          <br><b>3. </b>Turn your phone to silent mode and minimize ambient noise.
+          <br><b>4. </b>Please do not exit fullscreen mode.</b>
+            <br><b>5.</b> Make sure your system volume is at a comfortable level.
+              Please use a wired headset/earphone or computer's built-in stereo.
+              <b> Please do NOT use Bluetooth headset/earphone!</b> Bluetooth affects the duration of experimental stimuli.<br>
+            Please listen to this sound and tell us what kind of animal is that?            <input type="button" value="PLAY" onclick="playtest()">
+                        <audio id="audio" src="sound/Testsound.ogg"></audio><br>
+                        <select id="auditest" name="hand">
+                            <option value=""></option>
+                            <option value="1">Cat</option>
+                            <option value="2">Birds</option>
+                            <option value="3">Sheep</option>
+                            <option value="3">Dog</option>
+                        </select>
+            <br>It might be a little bit boring, but this is the shortest way to get an accurate measure of Duration Perception.
+          In this setting, <b>each of your reports matters a lot</b>. How fast you can respond is NOT important to us,
+          we care more about <b>how accurate you can be</b>.
+          Some of the comparisons are difficult but try your best to make an accurate judge : )
+          <br>
+
+    </p>
+    <hr>
+          <center>
+
+              <button class="button" onClick="changediv(ExpInfo,intro);">
+               Back
+              </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="button" id="begin" onClick="basicinfo();">
+              Start the experiment
+              </button>
+          </center>
+ </div>
+
+ <!--Early Quite Page-->
+ <div class = 'exp'   id = 'QuitPage2' style="display:none;">
+     <center>
+   <p>Your response have been saved. Thanks for your participation.</p>
+     </center>
+ </div>
+
+ <script>
+
+ // Your web app's Firebase configuration
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ const firebaseConfig = {
+   apiKey: "AIzaSyAOt2wFN_BQtUIPzepiJRegMu9HlitHbhQ",
+   authDomain: "sms-timeperception.firebaseapp.com",
+   projectId: "sms-timeperception",
+   storageBucket: "sms-timeperception.appspot.com",
+   messagingSenderId: "865405917294",
+   appId: "1:865405917294:web:c3f888c3501894d0966e7f",
+   measurementId: "G-0DS7WRR065"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+ firebase.analytics();
+ // create db for database func
+const db=firebase.firestore();
+db.settings({timestampsInSnapshots: true});
+
+ </script>
+
+</body>
+</html>

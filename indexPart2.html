@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--Basic parameters-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS&language</title>
+    <!-- fetch directives are to control locations from which certain resource types may be loaded.-->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src * data: blob: ws: wss: gap://ready file://*;
+    style-src * 'unsafe-inline';
+    script-src * 'unsafe-inline' 'unsafe-eval';
+    connect-src * ws: wss:;" />
+    <!--Add CSS and js -->
+    <link rel="stylesheet" href="Style.css" type="text/css" />
+    <link rel="shortcut icon" href="">
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+        <script>
+
+        // for permutation
+        var sequence = [
+          [0,1,2],
+          [1,0,2],
+          [2,0,1],
+          [2,1,0],
+        ];
+
+        var link =[
+          'Discrimination1.html','Discrimination2.html','Synchronization.html'
+        ]
+        var TotalParts=3;
+
+        function drainage(){
+            subjectid=document.getElementById("subjID").value;
+           if (subjectid ) {
+             localStorage.setItem("subjectid",subjectid);
+             subjecttimes=1;
+             window.location.href = link[sequence[subjectid.charCodeAt(2)%TotalParts][subjecttimes-1]] + '?'+subjectid+ subjecttimes;
+             } else {
+              alert("Please fill out the information!");
+           }
+          }
+         </script>
+
+</head>
+
+<body style="background-color:#A6ACAF">
+
+  <!-- LOGO -->
+  <div id ='header' class="container1">
+    <img src="img/logo.png"  width="480px" height="90px" ></img>
+  </div>
+
+  <!-- Drainage Page -->
+  <div id='Drainage' class="container" style="display:''">
+
+    <div class="questions" id="Form1" style="margin: 0;position: absolute;
+    top: 50%;left: 50%;transform: translate(-50%, -50%);text-align: center;">
+        Your Email:<input id="subjID" type="text" value="">
+    <br><br>
+    Before continue, make sure your system volume is at a comfortable level and
+     <b> Please do NOT use Bluetooth headset/earphone!</b> Bluetooth affects the duration of experimental stimuli.<br>
+     <br><br>
+    </div>
+        <button class="button" id="begin" onClick="drainage()" style="margin: 0;position: absolute; top: 80%;left: 50%;transform: translate(-50%, -50%);text-align: center;">
+        Proceed
+        </button>
+
+  </div>
+
+ <script>
+
+ // Your web app's Firebase configuration
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ const firebaseConfig = {
+   apiKey: "AIzaSyAOt2wFN_BQtUIPzepiJRegMu9HlitHbhQ",
+   authDomain: "sms-timeperception.firebaseapp.com",
+   projectId: "sms-timeperception",
+   storageBucket: "sms-timeperception.appspot.com",
+   messagingSenderId: "865405917294",
+   appId: "1:865405917294:web:c3f888c3501894d0966e7f",
+   measurementId: "G-0DS7WRR065"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+ firebase.analytics();
+ // create db for database func
+const db=firebase.firestore();
+db.settings({timestampsInSnapshots: true});
+
+ </script>
+
+</body>
+</html>

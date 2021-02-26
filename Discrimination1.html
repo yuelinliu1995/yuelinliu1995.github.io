@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <!--Basic parameters-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS DurationDiscrmination</title>
+    <!-- fetch directives are to control locations from which certain resource types may be loaded.-->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src * data: blob: ws: wss: gap://ready file://*;
+    style-src * 'unsafe-inline';
+    script-src * 'unsafe-inline' 'unsafe-eval';
+    connect-src * ws: wss:;" />
+
+    <link rel="shortcut icon" href="">
+    <!--Add CSS and js -->
+     <script src="https://www.html5rocks.com/en/tutorials/webaudio/intro/js/buffer-loader.js"> </script>
+     <link rel="stylesheet" href="Style.css" type="text/css" />
+     <script type="text/javascript" src="js\Discrimination1.js"></script>
+     <script src="https://www.html5rocks.com/en/tutorials/webaudio/intro/js/buffer-loader.js"></script>
+
+         <!-- The core Firebase JS SDK is always required and must be listed first -->
+         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+         <!-- TODO: Add SDKs for Firebase products that you want to use
+              https://firebase.google.com/docs/web/setup#available-libraries -->
+         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+         <!-- The core Firebase JS SDK is always required and must be listed first -->
+         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+
+</head>
+<body style="background-color:#A6ACAF">
+  <!-- Instruction Page -->
+  <div id='introEXP' class="container" style="display:''">
+    <center><h1 id = 'partinfo'> </h1></center>
+          <center> <b>Please read the instructions thoroughly!</b></center>
+          <br>
+
+      <div id="Sychronization" class="tab" >
+        <center><div class="tablinks" >
+         <h3>Duration Discrimination Task</h3></div></center>
+      </div>
+      <div id="SMS" class="tabcontent">
+        <img src="img/DisIntro1.png" width=70%>
+
+        <video id= 'video' controls>
+            <source src="media/Discrimination1.mp4" type="video/mp4">
+        </video>
+        <br>
+      <b><center>Check the sample video →</center></b>
+      </div>
+       <center><b>This experiment part takes up to 30 min.</b></center>
+       <br>
+       <b>Please Do not use any counting strategy! Just feel the duration can make comparisons.</b>
+
+      <div class="clearfix"></div>
+      <br>
+            What's the code from the instructions (Reread the instructions if you don't know)：
+            <input id="Code" type="text" value="">
+        <br>
+        <br>
+          <center>
+          <button class="button" onClick="Initiate()">
+          Start Practice
+          </button>
+          </center>
+  </div>
+
+
+   <!-- Experimental pages -->
+   <div id="myProgress" style="display:none;">
+     <div id="myBar"> Progress </div>
+   </div>
+   <div class = 'exp'   id = 'speaker' style="display:none;">
+    <img src="img/speaker.png" width="50" height="60">
+   </div>
+   <div class = 'exp'   id = 'Question' style="display:none;">
+     <p><center>
+      Where was the longest tone? <br><br><br><br>
+      <b>First</b> press [←]
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <b>Second</b> press [→]
+     </center></p>
+   </div>
+   <div class = 'exp'   id = 'Correct' style="display:none;">
+     <p><center> <span style="font-size: 30px; ">
+     <b>Correct</b></span>
+     </center></p>
+   </div>
+   <div class = 'exp'   id = 'Wrong' style="display:none;">
+     <p><center> <span style="color: #AE1B2D;font-size: 30px; ">
+     <b>Wrong</b></span>
+     </center></p>
+   </div>
+
+   <div class = 'exp'   id = 'Restt' style="display:none;">
+    <p><center> <span "font-size: 30px; ">
+     <b>Rest</b></span>
+    </center></p>
+   </div>
+   <div class = 'exp'   id = 'LongRestt' style="display:none;">
+    <p><center> <span style="font-size: 30px; ">
+     <b> 5-sec Rest</b></span>
+     </center></p>
+   </div>
+   <div class = 'exp'   id = 'Restart' style="display:none;">
+    <p><center> <span style="font-size: 30px; ">
+     Press ENTER to continue</span>
+     </center></p>
+   </div>
+   <div class = 'exp'   id = 'RestReport' style="display:none;">
+    <p><center> <span "font-size: 30px; ">
+     <b>Rest</b></span>
+    </center></p>
+  </div>
+
+   <div class = 'exp'   id = 'RestPrac' style="display:none;">
+     <center>
+       Rest
+       <br><br><br><br><br><br><br><br>
+
+     <button class="button" onClick="changediv(RestPrac,introEXP)">
+     Back to Instruction
+     </button>
+     </center>
+   </div>
+   <div class = 'exp'   id = 'introEXP2' style="display:none;">
+     <p> <center>The formal experiment contains 135 trials in total, <br>
+       and you will have a relatviely long rest and accuracy rate feedback every 10 trials.
+       <br> <br> <br> <br> <br>
+        <span style="font-size: 30px; ">
+     <b>Press ENTER to start</b></span>
+     </center></p>
+   </div>
+
+   <!-- Thanks Page + FinalPage + QuitPage1 -->
+    <div class = 'exp'  id = 'ThanksPage' style="display:none;">
+        <center>
+      <p>Your response have been saved :)  Your completion code is: FireDog. <br>
+      <br>If you do not receive compensation in 10 business days please email liuyuelin@pku.edu.cn.</p>
+
+      <p>Hope you have a wonderful life.</p>
+        </center>
+    </div>
+    <div class = 'exp'  id = 'QuitPage1' style="display:none;">
+        <center>
+          <h3>Oh no!</h3>
+          <hr />
+          <p>If you are seeing this page it means you did not pass an attention or understanding task.</p>
+          <p>This task requires your full attention, thus we kindly ask you to exit and return this study.</p>
+          <p>You can also refresh the page to restart this experiment.</p>
+          <p>We're sorry for this inconvenience.</p><center>
+     </div>
+     <div class = 'exp'  id="FinalPage1" style="display:none">
+        <div class="media-body">
+            <p id="finishpart"> </p>
+            <hr />
+            <center>
+                <button type="button" id="end" value="final" onClick="saveFeedback();">Continue</button>
+            </center>
+        </div>
+    </div>
+    <div class = 'exp'  id = "FinalPage2" style="display:none">
+         <div class="media-body">
+             <h3>Thanks for your participation for this experiment part!</h3>
+             <hr />
+             <p>
+                     Beofre finishing, Let us know if you had any issues/comments with this experiment!
+                     <br> <input id="feedback2" type="text" name="feedback" value="">
+            </p>
+
+
+             <center>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <button type="button" id="end" value="final" onClick="saveFeedback();">
+                     Submit
+                 </button>
+             </center>
+         </div>
+     </div>
+
+</body>
+<script>
+
+//get subjID
+var subjectid =window.location.href.split('?')[1];
+document.getElementById('partinfo').innerHTML ="Part "+subjectid.charAt(subjectid.length-1)+ ' Long Duration Discrimination';
+document.getElementById('finishpart').innerHTML ='You have finished this part :)';
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAOt2wFN_BQtUIPzepiJRegMu9HlitHbhQ",
+  authDomain: "sms-timeperception.firebaseapp.com",
+  projectId: "sms-timeperception",
+  storageBucket: "sms-timeperception.appspot.com",
+  messagingSenderId: "865405917294",
+  appId: "1:865405917294:web:c3f888c3501894d0966e7f",
+  measurementId: "G-0DS7WRR065"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+// create db for database func
+const db=firebase.firestore();
+db.settings({timestampsInSnapshots: true});
+</script>
+</html>
